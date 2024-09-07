@@ -1,5 +1,6 @@
 def main():
-    print("Hello world")
+    return 7
 
 if __name__ == "__main__":
-    main()
+    result = main()
+    print(result)
