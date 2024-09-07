@@ -25,13 +25,14 @@ jobs:
       continue-on-error: true
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r requirements.txt 2>&1 | tee summary.md
       id: build
 
     - name: Run tests
       continue-on-error: true
       run: |
-        pytest > summary.md
+        echo "\nTest Results:\n" >> summary.md
+        pytest 2>&1 | tee -a summary.md
       id: test
 
     - name: Upload SummaryResult artifact
